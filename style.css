@@ -1,0 +1,336 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #0b1120;
+    color: #e2e8f0;
+    min-height: 100vh;
+}
+
+.app {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.navbar {
+    height: 85px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #263247;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-icon {
+    background: #2563eb;
+    color: white;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.brand h2 {
+    font-size: 19px;
+}
+
+.brand span {
+    color: #8493a8;
+    font-size: 9px;
+    letter-spacing: 1.2px;
+}
+
+.network-badge {
+    background: #142c29;
+    color: #6ee7b7;
+    padding: 9px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.dot {
+    display: inline-block;
+    background: #34d399;
+    height: 7px;
+    width: 7px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
+main {
+    padding: 55px 0;
+}
+
+.hero {
+    margin-bottom: 35px;
+}
+
+.eyebrow {
+    color: #60a5fa;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin: 12px 0;
+    color: #f8fafc;
+}
+
+.hero p {
+    color: #94a3b8;
+    font-size: 15px;
+}
+
+.wallet-panel,
+.activity-panel {
+    background: #141e30;
+    border: 1px solid #29364b;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 45px;
+}
+
+.panel-heading,
+.wallet-details,
+.wallet-network,
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.panel-heading h3,
+.activity-panel h3 {
+    font-size: 16px;
+}
+
+.status-badge {
+    color: #fbbf24;
+    background: #352b18;
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+}
+
+.wallet-details {
+    margin: 25px 0;
+    gap: 15px;
+}
+
+.field-label {
+    color: #8493a8;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.wallet-details p {
+    margin-top: 8px;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+.primary-btn {
+    background: #2563eb;
+    border: none;
+    color: white;
+    padding: 12px 19px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.primary-btn:hover {
+    background: #1d4ed8;
+}
+
+.wallet-network {
+    border-top: 1px solid #29364b;
+    padding-top: 17px;
+    color: #94a3b8;
+    font-size: 12px;
+}
+
+.wallet-network span:last-child {
+    color: #e2e8f0;
+}
+
+.candidates-section {
+    margin-bottom: 40px;
+}
+
+.section-heading {
+    margin-bottom: 22px;
+}
+
+.section-heading h2 {
+    margin-top: 9px;
+    font-size: 24px;
+}
+
+.secondary-btn {
+    background: #1b2a40;
+    border: 1px solid #35445b;
+    color: #cbd5e1;
+    padding: 10px 14px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.secondary-btn:hover {
+    background: #263750;
+}
+
+.candidate-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.candidate-card {
+    background: #141e30;
+    border: 1px solid #29364b;
+    border-radius: 12px;
+    padding: 22px;
+    transition: border-color 0.2s;
+}
+
+.candidate-card:hover {
+    border-color: #3b82f6;
+}
+
+.candidate-avatar {
+    height: 42px;
+    width: 42px;
+    border-radius: 9px;
+    background: #263750;
+    display: grid;
+    place-items: center;
+    color: #93c5fd;
+    font-size: 18px;
+    margin-bottom: 18px;
+}
+
+.candidate-card h3 {
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+
+.candidate-id {
+    color: #8493a8;
+    font-size: 11px;
+}
+
+.vote-count {
+    margin: 20px 0;
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.vote-count small {
+    color: #94a3b8;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.vote-btn {
+    width: 100%;
+    padding: 11px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.vote-btn:hover {
+    background: #1d4ed8;
+}
+
+.vote-btn:disabled {
+    background: #334155;
+    color: #94a3b8;
+    cursor: not-allowed;
+}
+
+.empty-state {
+    grid-column: 1 / -1;
+    padding: 35px;
+    text-align: center;
+    border: 1px dashed #35445b;
+    border-radius: 10px;
+    color: #94a3b8;
+}
+
+.activity-panel {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 0;
+}
+
+.activity-icon {
+    background: #1e3a5f;
+    color: #60a5fa;
+    padding: 12px;
+    border-radius: 9px;
+    font-size: 20px;
+}
+
+.activity-panel p {
+    margin-top: 6px;
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+footer {
+    border-top: 1px solid #263247;
+    padding: 25px 0;
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    color: #718096;
+    font-size: 11px;
+}
+
+@media (max-width: 700px) {
+    .app {
+        width: 92%;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .candidate-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .wallet-details,
+    .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    footer {
+        gap: 10px;
+        flex-direction: column;
+    }
+}
