@@ -1,63 +1,47 @@
-
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
 contract Voting {
-
-    // Store candidate information
     struct Candidate {
         uint256 id;
         string name;
         uint256 voteCount;
     }
 
-    // Store all candidates
-    Candidate[] public candidates;
+    Candidate[] private candidates;
+    mapping(address => bool) private voted;
 
-    // Track whether an address has voted
-    mapping(address => bool) private voters;
+    event VoteCast(address indexed voter, uint256 indexed candidateId, uint256 newVoteCount);
 
-    // Event generated after successful voting
-    event VoteCast(address indexed voter, uint256 indexed candidateId);
-
-    // Initialize three candidates
     constructor() {
         candidates.push(Candidate(0, "Alice", 0));
         candidates.push(Candidate(1, "Bob", 0));
-        candidates.push(Candidate(2, "Charlie", 0));
+        candidates.push(Candidate(2, "Carol", 0));
     }
 
-    // Allow users to cast a vote
-    function vote(uint256 candidateId) public {
-        require(candidateId < candidates.length, "Invalid candidate ID");
-        require(!voters[msg.sender], "You have already voted");
-
-        voters[msg.sender] = true;
-        candidates[candidateId].voteCount++;
-
-        emit VoteCast(msg.sender, candidateId);
+    function vote(uint256 candidateId) external {
+        require(!voted[msg.sender], "Already voted");
+        require(candidateId < candidates.length, "Invalid candidate");
+        voted[msg.sender] = true;
+        candidates[candidateId].voteCount += 1;
+        emit VoteCast(msg.sender, candidateId, candidates[candidateId].voteCount);
     }
 
-    // Retrieve candidate information
-    function getCandidate(uint256 candidateId)
-        public
-        view
-        returns (uint256, string memory, uint256)
-    {
-        require(candidateId < candidates.length, "Invalid candidate ID");
-
-        Candidate memory c = candidates[candidateId];
-
+    function getCandidate(uint256 candidateId) external view returns (uint256, string memory, uint256) {
+        require(candidateId < candidates.length, "Invalid candidate");
+        Candidate storage c = candidates[candidateId];
         return (c.id, c.name, c.voteCount);
     }
 
-    // Return total number of candidates
-    function getCandidateCount() public view returns (uint256) {
+    function getCandidates() external view returns (Candidate[] memory) {
+        return candidates;
+    }
+
+    function getCandidateCount() external view returns (uint256) {
         return candidates.length;
     }
 
-    // Check whether an address has voted
-    function hasVoted(address voter) public view returns (bool) {
-        return voters[voter];
+    function hasVoted(address voter) external view returns (bool) {
+        return voted[voter];
     }
 }
