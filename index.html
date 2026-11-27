@@ -1,96 +1,39 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChainVote | Decentralized Voting</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ChainVote DApp</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <main>
+    <header>
+      <h1>ChainVote DApp</h1>
+      <p class="sub">One vote per Ethereum address, recorded on Sepolia.</p>
+    </header>
 
-    <div class="app">
+    <section class="panel" id="wallet">
+      <div>
+        <div class="label">Wallet</div>
+        <div id="account" class="mono">Not connected</div>
+        <div id="network" class="net">Network: unknown</div>
+      </div>
+      <div class="actions">
+        <button id="connectBtn">Connect MetaMask</button>
+        <button id="switchBtn" class="secondary" hidden>Switch to Sepolia</button>
+      </div>
+    </section>
 
-        <header class="navbar">
-            <div class="brand">
-                <div class="brand-icon">C</div>
-                <div>
-                    <h2>ChainVote</h2>
-                    <span>DECENTRALIZED GOVERNANCE</span>
-                </div>
-            </div>
+    <div id="error" class="msg error" hidden role="alert"></div>
+    <div id="status" class="msg status" hidden aria-live="polite"></div>
 
-            <div class="network-badge">
-                <span class="dot"></span>
-                Sepolia Testnet
-            </div>
-        </header>
+    <section id="candidates" aria-label="Candidates"></section>
 
-        <main>
-            <section class="hero">
-                <span class="eyebrow">VOTING DASHBOARD / 2026</span>
-                <h1>Cast your vote.</h1>
-                <p>Transparent, secure and decentralized voting powered by Ethereum.</p>
-            </section>
+    <p id="voteNote" class="note" hidden></p>
+  </main>
 
-            <section class="wallet-panel">
-                <div class="panel-heading">
-                    <h3>Wallet Connection</h3>
-                    <span id="walletStatus" class="status-badge">Not Connected</span>
-                </div>
-
-                <div class="wallet-details">
-                    <div>
-                        <span class="field-label">ACCOUNT ADDRESS</span>
-                        <p id="account">Not connected</p>
-                    </div>
-
-                    <button id="connectWallet" class="primary-btn">
-                        Connect MetaMask
-                    </button>
-                </div>
-
-                <div class="wallet-network">
-                    <span>Network</span>
-                    <span id="network">Not connected</span>
-                </div>
-            </section>
-
-            <section class="candidates-section">
-                <div class="section-heading">
-                    <div>
-                        <span class="eyebrow">ELECTION</span>
-                        <h2>Available Candidates</h2>
-                    </div>
-
-                    <button id="refreshResults" class="secondary-btn">
-                        ↻ Refresh Results
-                    </button>
-                </div>
-
-                <div id="candidates" class="candidate-grid">
-                    <div class="empty-state">
-                        Connect your wallet to load candidates.
-                    </div>
-                </div>
-            </section>
-
-            <section class="activity-panel">
-                <div class="activity-icon">↗</div>
-                <div>
-                    <h3>Transaction Activity</h3>
-                    <p id="status">Waiting for wallet connection...</p>
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            <span>ChainVote © 2026</span>
-            <span>Powered by Ethereum Smart Contracts</span>
-        </footer>
-
-    </div>
-
-    <script type="module" src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.2/dist/ethers.umd.min.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
